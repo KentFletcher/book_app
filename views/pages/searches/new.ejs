@@ -8,11 +8,11 @@
 </head>
 <body>
     <h1>Search by Title or Author</h1>
-    <form action="/searches/new" method='post'>
-        <input type="text" name="search" placeholder="Enter a title or author" required>
+    <form action="/searches" method='post'>
+        <input type="text" name="searchQuery" placeholder="Enter a title or author" required>
         <fieldset>
-            <label>Title</label><input type="radio" name="search" value="title">
-            <label>Author</label><input type="radio" name="search" value="author">
+            <label>Title</label><input type="radio" name="search" value="intitle">
+            <label>Author</label><input type="radio" name="search" value="inauthor">
         </fieldset>
         
         <button class="searchButton" type="submit">Search the Google Books API</button>
