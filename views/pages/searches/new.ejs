@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Search</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+    <h1>Search by Title or Author</h1>
+    <form action="/searches/new" method='post'>
+        <input type="text" name="search" placeholder="Enter a title or author" required>
+        <fieldset>
+            <label>Title</label><input type="radio" name="search" value="title">
+            <label>Author</label><input type="radio" name="search" value="author">
+        </fieldset>
+        
+        <button class="searchButton" type="submit">Search the Google Books API</button>
+    </form>
+</body>
+</html>

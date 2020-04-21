@@ -15,12 +15,17 @@ app.set('view engine', 'ejs');
 // const client = new pg.Client(process.env.DATABASE_URL);
 
 app.get('/', renderHome);
+app.get('/searches/new', renderNewSearch);
 
 function renderHome (request, response){
   response.render('pages/index');
 }
 
+function renderNewSearch (request, response) {
+  response.render('pages/searches/new');
+}
+
 // client.connect()
 //   .then(() => {
-    app.listen(PORT, () => console.log(`listening on port: ${PORT}`));
+app.listen(PORT, () => console.log(`listening on port: ${PORT}`));
 //   });
