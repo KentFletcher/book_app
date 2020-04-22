@@ -1,0 +1,88 @@
+form {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    min-width:40%;
+    margin-top: 40px;
+    padding: 14%;
+}
+
+form input {
+    margin: 14px;
+    height: 28px;
+    border-radius: 7px;
+    border-style: none;
+
+}
+
+label {
+    border: thin solid black;
+    margin: 7px;
+    padding: 7px;
+}
+
+.searchBox {
+    width: 80%;
+}
+
+fieldset {
+    width: 80%;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+fieldset> label{
+    border: thin solid black;
+    border-radius: 14px;
+    margin: 7px;
+    padding: 7px;
+    max-width: 80%;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchButton {
+    width: 80%;
+    height: 30px;
+    border-radius: 7px;
+    border-style: none;
+    background-color: burlywood;
+}
+
+.resultsMain {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+.bookRender {
+    max-width: 80%;
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 3px;
+    align-items: center;
+    margin: 21px 0;
+    background-color: cornsilk;
+    border-radius: 7px;
+    box-shadow: 3px 4px ;
+
+}
+
+.bookRender img, h2, h3, p{
+    margin: 7px 0;
+}
+
+@media(min-width: 960px){
+    .resultsMain{
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .bookRender{
+        max-width: 40%;
+        height: 550px;
+        overflow: hidden;
+    }
+}
