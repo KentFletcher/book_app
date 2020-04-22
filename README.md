@@ -31,39 +31,39 @@ Estimate of time needed to complete: 1.5 hours
 
 Start time: 9am
 
-Finish time: _____
+Finish time: 10
 
-Actual time needed to complete: _____
+Actual time needed to complete: 1 hr
 -------------------------------------------------------------
 Number and name of feature: 2. As a user, I want to search the Google Books API so that I can view the results of my search.
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 1 hr
 
-Start time: _____
+Start time: 10
 
-Finish time: _____
+Finish time: 1045
 
-Actual time needed to complete: _____
+Actual time needed to complete: 3/4 hr
 -------------------------------------------------------------
 Number and name of feature: 3. As a user, I want to be able to browse the search results.
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 2 hr
 
-Start time: _____
+Start time: 11
 
-Finish time: _____
+Finish time: ?
 
-Actual time needed to complete: _____
+Actual time needed to complete: 4+ hr
 --------------------------------------------------------------
 Number and name of feature: 4. As a user, I want to view any error messages that occur during the usage of my book list application so that I know if something has gone wrong.
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 30 min
 
-Start time: _____
+Start time: 11
 
-Finish time: _____
+Finish time: 1115
 
-Actual time needed to complete: _____
+Actual time needed to complete: 15 min
 -------------------------------------------------------------
 Number and name of feature: 5. As a user, I want a simple, clean looking UI so that my application is easy to navigate.
 

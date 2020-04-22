@@ -52,8 +52,12 @@ function collectFormData (request, response) {
     .then(apiResponse => apiResponse.body.items.map(bookResult => new Book(bookResult.volumeInfo)))
     .then(results => response.render('pages/searches/show', { results: results }))
     .catch(error => {
-      console.log(error);
+      handleError(error, request, response);
     });
+}
+
+function handleError (error, request, response) {
+    response.status(500).render('./pages/error');
 }
 
 // client.connect()
