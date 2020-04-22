@@ -28,7 +28,7 @@ function Book(book){
   this.isbn = book.isbn;
   this.bookshelf = book.bookshelf;
   if(book.imageLinks){
-    this.image = book.imageLinks.thumbnail ? book.imageLinks.thumbnail : url('.styles/img/placeholder_img.png');
+    this.image = book.imageLinks.thumbnail ? book.imageLinks.thumbnail : url('./styles/img/placeholder_img.png');
   }
 }
 

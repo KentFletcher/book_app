@@ -67,9 +67,9 @@ Actual time needed to complete: 15 min
 -------------------------------------------------------------
 Number and name of feature: 5. As a user, I want a simple, clean looking UI so that my application is easy to navigate.
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 1 hr
 
-Start time: _____
+Start time: 130
 
 Finish time: _____
 
