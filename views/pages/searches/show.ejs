@@ -3,9 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Book Search Results</title>
+    <link rel="stylesheet" href="../styles/styles.css">
 </head>
 <body>
     <h1>Show Books searched for.</h1>
+
+        <% results.forEach(book => { %>
+            <img src="<%= book.image %>" >
+            
+            <h2><%= book.title %></h2> 
+            
+            <h3><%= book.author %></h3>
+            
+            <p>  <%= book.description %>    </p>  
+
+        <% }) %>
 </body>
 </html>
