@@ -94,27 +94,27 @@ Number and name of feature: 1. As a user, I want all of my saved books to be dis
 
 Estimate of time needed to complete: 1hr
 
-Start time: _____
+Start time: 630
 
-Finish time: _____
+Finish time: 830
 
-Actual time needed to complete: _____
+Actual time needed to complete: 2hr
 -----------------------------------------------------------------
 Number and name of feature: 2. As a user, I want to request information about a single book so that I can view its additional details and share it by URL.
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 2hr
 
-Start time: _____
+Start time: 830
 
-Finish time: _____
+Finish time: 1130
 
-Actual time needed to complete: _____
+Actual time needed to complete: 3hr
 ----------------------------------------------------------------
 Number and name of feature: 3. As a user, I want the ability to add new books to my application so that I can save search results.
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 1.5hr
 
-Start time: _____
+Start time: 1030
 
 Finish time: _____
 
