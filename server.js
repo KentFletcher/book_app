@@ -19,7 +19,9 @@ app.set('view engine', 'ejs');
 app.get('/', renderHome);
 app.get('/searches/new', renderNewSearch);
 app.post('/searches', collectFormData);
-
+// app.post('books', addToCollection);
+app.get('/books/:id', getBookDetails);
+app.get('*', (request, response) => response.status(404).render('./pages/error', {errorMessage: 'Page not found', errorCorrect: 'The path you took, leads only here.  Some would call this, "nowhere".'}));
 
 // Constructor Function
 function Book(book){
@@ -57,11 +59,25 @@ function collectFormData (request, response) {
 
   superagent.get(url)
     .then(apiResponse => apiResponse.body.items.map(bookResult => new Book(bookResult.volumeInfo)))
-    .then(results => response.render('pages/searches/show', { results: results }))
+    .then(book => response.render('pages/books/show', { book: book }))
     .catch(error => {
       handleError(error, request, response);
     });
 }
+
+function getBookDetails(request, response) {
+  let id = request.params.id;
+  let sql = 'SELECT * FROM books WHERE id=$1;';
+  let safeValues = [id];
+
+  client.query(sql, safeValues)
+    .then(results => response.render('./pages/books/details', {book: results.rows}))
+    .catch((err) => {
+      console.log('Error showing book details', err)
+      response.status(500).render('.pages/error', {errorMessage: 'Could not show book details', errorCorrect: 'Not sure what you did?'})
+    })
+}
+
 
 function handleError (error, request, response) {
   response.status(500).render('./pages/error');

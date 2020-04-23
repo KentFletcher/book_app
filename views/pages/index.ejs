@@ -14,21 +14,9 @@
         <h5> Your Collection: <%= count  %> books </h5>
     </section>
 
-    <main class="resultsMain">
-
-            <% book.forEach(book => { %>
-        <article class="bookRender">
-            <img src="<%= book.image %>" >
-            
-            <h2><%= book.title %></h2> 
-            
-            <h3><%= book.author %></h3>
-            
-            <p>  <%= book.description %>    </p>  
-        </article>
-            <% }) %>
     
-    </main>
+    <%- include('./partials/bookdisplay') %>
+ 
 
     <a href="/searches/new"><button> Search for Books</button> </a>
 </body>
