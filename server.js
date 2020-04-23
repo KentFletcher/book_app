@@ -3,7 +3,8 @@
 require('dotenv').config();
 
 const express = require('express');
-// const pg = require('pg');
+const pg = require('pg');
+const client = new pg.Client(process.env.DATABASE_URL);
 const superagent = require('superagent');
 
 const app = express();
@@ -12,7 +13,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static('./public'));
 app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
-// const client = new pg.Client(process.env.DATABASE_URL);
+
 
 // Routes
 app.get('/', renderHome);
@@ -20,7 +21,7 @@ app.get('/searches/new', renderNewSearch);
 app.post('/searches', collectFormData);
 
 
-// Constructor Functions
+// Constructor Function
 function Book(book){
   this.title = book.title;
   this.author = book.authors;
@@ -35,7 +36,14 @@ function Book(book){
 
 // Callback functions
 function renderHome (request, response){
-  response.status(200).render('./pages/index');
+  let sql = 'SELECT * FROM books;';
+
+  client.query(sql)
+    .then(results => {
+      let resultsData = results.rows;
+      let collectionCount = results.rows.length;
+      response.status(200).render('./pages/index', {book: resultsData, count: collectionCount});
+    }).catch(error => handleError(error, request, response));
 }
 
 function renderNewSearch (request, response) {
@@ -44,7 +52,6 @@ function renderNewSearch (request, response) {
 
 function collectFormData (request, response) {
   let searchText = request.body.searchQuery;
-  //   console.log(formData);
   let radioSelect = request.body.search;
   let url = `https://www.googleapis.com/books/v1/volumes?q=+${radioSelect}:${searchText}&maxResult=10`;
 
@@ -57,10 +64,13 @@ function collectFormData (request, response) {
 }
 
 function handleError (error, request, response) {
-    response.status(500).render('./pages/error');
+  response.status(500).render('./pages/error');
 }
 
-// client.connect()
-//   .then(() => {
-app.listen(PORT, () => console.log(`listening on port: ${PORT}`));
-//   });
+client.connect()
+  .then(() => {
+    app.listen(PORT, () => console.log(`listening on port: ${PORT}`))
+  }).catch((error, request, response) => {
+    console.log('server not running');
+    response.status(500).send(error);
+  });
