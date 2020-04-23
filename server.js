@@ -6,20 +6,21 @@ const express = require('express');
 const pg = require('pg');
 const client = new pg.Client(process.env.DATABASE_URL);
 const superagent = require('superagent');
-
+const methodOverride = require('method-override');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.static('./public'));
 app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
+app.use(methodOverride('_method'));
 
 
 // Routes
 app.get('/', renderHome);
 app.get('/searches/new', renderNewSearch);
 app.post('/searches', collectFormData);
-// app.post('books', addToCollection);
+app.post('/books', addToCollection);
 app.get('/books/:id', getBookDetails);
 app.get('*', (request, response) => response.status(404).render('./pages/error', {errorMessage: 'Page not found', errorCorrect: 'The path you took, leads only here.  Some would call this, "nowhere".'}));
 
@@ -28,7 +29,7 @@ function Book(book){
   this.title = book.title;
   this.author = book.authors;
   this.description = book.description;
-  this.isbn = book.isbn;
+  this.isbn = book.industryIdentifiers[0].identifier;
   this.bookshelf = book.bookshelf;
   if(book.imageLinks){
     this.image = book.imageLinks.thumbnail ? book.imageLinks.thumbnail : url('./styles/img/placeholder_img.png');
@@ -73,9 +74,21 @@ function getBookDetails(request, response) {
   client.query(sql, safeValues)
     .then(results => response.render('./pages/books/details', {book: results.rows}))
     .catch((err) => {
-      console.log('Error showing book details', err)
-      response.status(500).render('.pages/error', {errorMessage: 'Could not show book details', errorCorrect: 'Not sure what you did?'})
-    })
+      console.log('Error showing book details', err);
+      response.status(500).render('.pages/error', {errorMessage: 'Could not show book details', errorCorrect: 'Not sure what you did?'});
+    });
+}
+
+function addToCollection (request, response) {
+  let {title, author, description, isbn, bookshelf, image} = request.body;
+  let sql =`INSERT INTO books (title, author, description, isbn, bookshelf, image) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`;
+  let safeValues = [title, author, description, isbn, bookshelf, image];
+
+  client.query(sql, safeValues)
+    .then(results => {
+      response.status(200).redirect(`./books/${results.rows[0].id}`);
+      console.log(results.rows[0].id);
+    }).catch(error =>handleError(error, request, response));
 }
 
 
