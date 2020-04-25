@@ -1,12 +1,13 @@
-
-
-  <form class="addBookForm" action="/books" method="POST" >
+<form class="addBookForm" action="/update/<%= book.id %>/?method=PUT" method="POST" >
     <fieldset class="addBookField">
 
         <input type="text" name="title" value="<%= book.title %>">
         <input type="text" name="author" value="<%= book.author %>">
         <input type="text" name="description" value="<%= book.description %>">
         <input type="text" name="isbn" value="<%= book.isbn %>">
+        <select name="" id="">
+            <option value=""><%= shelfOption  %></option>
+        </select>
         <input type="text" name="bookshelf" value="<%= book.bookshelf %>">
         <input type="text" name="image" value="<%= book.image %>">
     </fieldset>

@@ -1,16 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../styles/styles.css">
-</head>
-<body>
-    <a href="../"><button>Return to collection</button></a>
-    <%- include('../partials/bookdisplay' ) %>
+<main class="resultsMain">
 
-    <form class="addBookForm" action="/books/<%= book.id %>/?method=PUT" method="POST" >
+    <% book.forEach(book => { %>
+<article class="bookRender">
+    <img src="<%= book.image %>" >
+    
+    <h2><%= book.title %></h2> 
+    
+    <h3><%= book.author %></h3>
+    
+    <p>  <%= book.description %>    </p>  
+    
+
+    <form class="addBookForm" action="/books" method="POST" >
         <fieldset class="addBookField">
     
             <input type="text" name="title" value="<%= book.title %>">
@@ -20,6 +21,11 @@
             <input type="text" name="bookshelf" value="<%= book.bookshelf %>">
             <input type="text" name="image" value="<%= book.image %>">
         </fieldset>
+            <button class="submitButton" type="submit">Add to Collection</button>
     </form>
-</body>
-</html>
+
+    
+</article>
+    <% }) %>
+
+</main>

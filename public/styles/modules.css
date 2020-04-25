@@ -83,15 +83,37 @@ a button{
     text-align: center;
 }
 
+.submitButton {
+    background-color: darkgrey;
+}
+
+/* Add to Database */
+.addBookForm {
+    background: none;
+    height: auto;
+    width: auto;
+}
+
+.addBookField {
+    display: none;
+}
+
+
 @media(min-width: 960px){
     .resultsMain{
         flex-flow: row wrap;
         align-items: center;
         justify-content: space-around;
+        
     }
     .bookRender{
         max-width: 40%;
         height: 550px;
         overflow: hidden;
     }
+
+    article {
+        width: 50%;
+    }
+
 }
