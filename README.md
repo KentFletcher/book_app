@@ -116,19 +116,19 @@ Estimate of time needed to complete: 1.5hr
 
 Start time: 1030
 
-Finish time: _____
+Finish time: 1130
 
-Actual time needed to complete: _____
+Actual time needed to complete: 1 hr
 ----------------------------------------------------------------
 Number and name of feature: 4. As a user, I want the application to be designed in a consistent way so that I do not experience any down time or slow load times.
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 1 hr
 
-Start time: _____
+Start time: 1130
 
-Finish time: _____
+Finish time: 1230
 
-Actual time needed to complete: _____
+Actual time needed to complete: 1 hr
 -----------------------------------------------------------------
 Number and name of feature: 5. As a user, I want a simple, clean-looking UI so that my application is easy to navigate.
 

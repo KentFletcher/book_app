@@ -22,6 +22,7 @@ app.get('/searches/new', renderNewSearch);
 app.post('/searches', collectFormData);
 app.post('/books', addToCollection);
 app.get('/books/:id', getBookDetails);
+app.put('/books/:id', updateBook);
 app.get('*', (request, response) => response.status(404).render('./pages/error', {errorMessage: 'Page not found', errorCorrect: 'The path you took, leads only here.  Some would call this, "nowhere".'}));
 
 // Constructor Function
@@ -87,8 +88,30 @@ function addToCollection (request, response) {
   client.query(sql, safeValues)
     .then(results => {
       response.status(200).redirect(`./books/${results.rows[0].id}`);
-      console.log(results.rows[0].id);
+    //   console.log(results.rows[0].id);
     }).catch(error =>handleError(error, request, response));
+}
+
+// function getDistinct() {
+//     let sql = `SELECT DISTINCT bookshelf FROM books;`;
+//     client.query(sql);
+//         .then((results) => {
+//             let shelfOption = result.rows;
+//             response.status(200).render('./pages/')
+//         })
+// }
+
+function updateBook (request, response){
+  let id = request.params.id;
+  let {title, author, description, isbn, bookshelf, image} = request.body;
+  let sql = `UPDATE books SET title=$1, author=$2, description=$3, isbn=$4, bookshelf=$5, image=$6;`;
+  let safeValues = [title, author, description, isbn, bookshelf, image];
+
+  client.query(sql, safeValues)
+    .then( () => {
+      response.status(200).redirect(`./books/${id}`);
+    }).catch(error =>handleError(error, request, response));
+
 }
 
 
@@ -98,7 +121,7 @@ function handleError (error, request, response) {
 
 client.connect()
   .then(() => {
-    app.listen(PORT, () => console.log(`listening on port: ${PORT}`))
+    app.listen(PORT, () => console.log(`listening on port: ${PORT}`));
   }).catch((error, request, response) => {
     console.log('server not running');
     response.status(500).send(error);
