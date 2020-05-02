@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../styles/styles.css">
 </head>
 <body>
-    <a href="../"><button>Return to collection</button></a>
+    <a href="../"><button class="CollectionLinkButton">Return to collection</button></a>
     <%- include('../partials/bookdisplay' ) %>
 
     <form class="addBookForm" action="/books/<%= book.id %>/?method=PUT" method="POST" >
@@ -21,5 +21,6 @@
             <input type="text" name="image" value="<%= book.image %>">
         </fieldset>
     </form>
+   
 </body>
 </html>

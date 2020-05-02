@@ -31,10 +31,8 @@ function Book(book){
   this.author = book.authors;
   this.description = book.description;
   this.isbn = book.industryIdentifiers[0].identifier;
-  this.bookshelf = book.bookshelf;
-  if(book.imageLinks){
-    this.image = book.imageLinks.thumbnail ? book.imageLinks.thumbnail : url('./styles/img/placeholder_img.png');
-  }
+  this.bookshelf = book.categories;
+  this.image = book.imageLinks ? book.imageLinks.thumbnail : 'https://i.imgur.com/J5LVHEL.jpg';
 }
 
 
@@ -68,6 +66,7 @@ function collectFormData (request, response) {
 }
 
 function getBookDetails(request, response) {
+  getDistinct();
   let id = request.params.id;
   let sql = 'SELECT * FROM books WHERE id=$1;';
   let safeValues = [id];
@@ -92,14 +91,14 @@ function addToCollection (request, response) {
     }).catch(error =>handleError(error, request, response));
 }
 
-// function getDistinct() {
-//     let sql = `SELECT DISTINCT bookshelf FROM books;`;
-//     client.query(sql);
-//         .then((results) => {
-//             let shelfOption = result.rows;
-//             response.status(200).render('./pages/')
-//         })
-// }
+function getDistinct() {
+  let sql = `SELECT DISTINCT bookshelf FROM books ORDER BY bookshelf;`;
+  return client.query(sql);
+  // .then((results) => {
+  //     let shelfOption = result.rows;
+  //     response.status(200).render('./pages/')
+  // })
+}
 
 function updateBook (request, response){
   let id = request.params.id;

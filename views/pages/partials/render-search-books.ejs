@@ -7,13 +7,16 @@
     <h2><%= book.title %></h2> 
     
     <h3><%= book.author %></h3>
+    <div class="book-synopsis-container">
+        <p>  <%= book.description %>    </p>  
+    </div>
+    <h3> ISBN: <%= book.isbn %> </h3>
     
-    <p>  <%= book.description %>    </p>  
-    
+    <h3> Bookshelf: <%= book.bookshelf %> </h3>
 
     <form class="addBookForm" action="/books" method="POST" >
+        
         <fieldset class="addBookField">
-    
             <input type="text" name="title" value="<%= book.title %>">
             <input type="text" name="author" value="<%= book.author %>">
             <input type="text" name="description" value="<%= book.description %>">
@@ -21,9 +24,9 @@
             <input type="text" name="bookshelf" value="<%= book.bookshelf %>">
             <input type="text" name="image" value="<%= book.image %>">
         </fieldset>
-            <button class="submitButton" type="submit">Add to Collection</button>
+        <button class="submitButton" type="submit">Add to Collection</button>
     </form>
-
+    
     
 </article>
     <% }) %>
