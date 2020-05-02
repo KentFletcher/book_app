@@ -3,8 +3,8 @@ form {
     flex-flow: column nowrap;
     align-items: center;
     min-width:40%;
-    margin-top: 40px;
-    padding: 14%;
+    margin: 10px 0px 10px 0px;
+    
 }
 
 form input {
@@ -13,6 +13,26 @@ form input {
     border-radius: 7px;
     border-style: none;
 
+}
+form h1 {
+    border: thin solid black;
+    background-color: rgb(104, 103, 103);
+    color: whitesmoke;
+    border-radius: 7px;
+    height: 60px;
+    font-size: 30px;
+    width: 80%;
+    line-height: 60px;
+}
+
+#searchHeader {
+    font-size: 50px;
+}
+
+#searchForm {
+    border: thin solid black;
+    background-color: darkgray;
+    padding: 14%;
 }
 
 label {
@@ -23,20 +43,25 @@ label {
 
 .searchBox {
     width: 80%;
+    height: 60px;
+    font-size: larger;
+    text-align: center;
 }
 
 fieldset {
     width: 80%;
     display: flex;
     flex-flow: row nowrap;
+    font-size: larger;
 }
 
 fieldset> label{
     border: thin solid black;
     border-radius: 14px;
-    margin: 7px;
+    background-color: blanchedalmond;
+    margin: 10px 0px 20px 0px ;
     padding: 7px;
-    max-width: 80%;
+    width: 97%;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
@@ -45,10 +70,12 @@ fieldset> label{
 
 .searchButton {
     width: 80%;
-    height: 30px;
+    height: 60px;
     border-radius: 7px;
     border-style: none;
-    background-color: burlywood;
+    background-color: black;
+    color: whitesmoke;
+    font-size: larger;
 }
 
 a button{
@@ -64,7 +91,7 @@ a button{
 }
 
 .bookRender {
-    max-width: 80%;
+    width: 80%;
     display: flex;
     flex-flow: column nowrap;
     padding: 3px;
@@ -73,25 +100,54 @@ a button{
     background-color: cornsilk;
     border-radius: 7px;
     box-shadow: 3px 4px ;
-
+    height: auto;
+    
 }
 
 .bookRender img, h2, h3, p{
-    margin: 7px 0;
+    margin: 5px 0;
     font-size: large;
     font-family: sans-serif;
     text-align: center;
+    margin-bottom: 10px;
 }
+
+.bookRender p {
+    border: black;
+}
+
+.book-synopsis-container{
+    height: 30%;
+    width: 80%;
+    overflow-y: auto;
+    box-sizing: content-box;
+  }
 
 .submitButton {
     background-color: darkgrey;
+    border-radius: 7px;
+}
+.buttonSearchesLink {
+    margin: 20px 0px 10px 0px;
+    border-radius: 7px;
+    width: 150px;
+    height: 30px;
+}
+
+.CollectionLinkButton {
+    margin-top: 20px;
+    border-radius: 7px;
+}
+
+h5 {
+    font-size: larger;
 }
 
 /* Add to Database */
 .addBookForm {
     background: none;
-    height: auto;
-    width: auto;
+    /* height: auto;
+    width: auto; */
 }
 
 .addBookField {
@@ -109,11 +165,19 @@ a button{
     .bookRender{
         max-width: 40%;
         height: 550px;
-        overflow: hidden;
+        /* overflow: hidden; */
     }
 
-    article {
+    /* article {
         width: 50%;
-    }
+    } */
+
+    .book-synopsis-container{
+        height: 30%;
+        width: 80%;
+        overflow-y: auto;
+        box-sizing: content-box;
+        margin-bottom: 10px;
+      }
 
 }
